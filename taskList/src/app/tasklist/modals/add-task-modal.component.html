@@ -1,0 +1,99 @@
+<!-- add-task-modal.component.html -->
+<div tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          {{ data.action === "add" ? "Create" : "Update" }} Task
+        </h5>
+      </div>
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div class="modal-body">
+          <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+            {{ errorMessage }}
+          </div>
+          <div *ngIf="successMessage" class="alert alert-success mt-3">
+            {{ successMessage }}
+          </div>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control"
+              id="name"
+            />
+            <!-- <div
+          *ngIf="myForm.get('name').errors && myForm.get('name').touched"
+          class="invalid-feedback"
+        >
+          <div *ngIf="myForm.get('name').hasError('required')">
+            Name is required
+          </div>
+        </div> -->
+          </div>
+
+          <div class="form-group">
+            <label for="client">Client</label>
+            <input
+              type="text"
+              formControlName="customer"
+              class="form-control"
+              id="customer"
+            />
+            <!-- <div
+          *ngIf="myForm.get('client').errors && myForm.get('client').touched"
+          class="invalid-feedback"
+        >
+          <div *ngIf="myForm.get('client').hasError('required')">
+            Client is required
+          </div>
+        </div> -->
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+              formControlName="description"
+              class="form-control"
+              id="description"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="submit"
+            [disabled]="myForm.invalid"
+            class="btn btn-primary"
+          >
+            Submit
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="activeModal.close()"
+          >
+            Close
+          </button>
+        </div>
+      </form>
+      <!-- <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div> -->
+    </div>
+  </div>
+</div>
+<!-- <div class="modal">
+  <div class="modal-content">
+    <h2>Add New Task</h2> -->
+<!-- <input type="text" [(ngModel)]="newTaskName" placeholder="Task name" /> -->
+<!-- <button (click)="addTask()">Add Task</button>
+  </div>
+</div> -->
